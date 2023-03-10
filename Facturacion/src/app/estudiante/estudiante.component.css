@@ -1,0 +1,14 @@
+table {
+    background-color: #0476e7;
+    border: 1px solid #007efc;
+    width: 100%;
+  }
+
+  table td {
+    text-align: left;
+  }
+  table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+    
+  

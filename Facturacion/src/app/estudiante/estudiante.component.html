@@ -1,0 +1,60 @@
+<input type="text" pInputText (input)="filterEstudiantes($event, dt)" placeholder="Buscar por">
+
+<p-table #dt [value]="filteredEstudiante">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Id</th>
+      <th>Etdminar</th>
+      <th>Editar</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-estu>
+    <tr>
+      <td>{{estu.materia}}</td>
+      <td>{{estu.paralelo}}</td>
+      <td>{{estu.horas}}</td>
+      <td> {{ estu.codmat }}</td>
+    <td> {{ estu.paralelo }}</td>
+    <td> {{ estu.horas }}</td>
+    <td> {{ estu.aula }}</td>
+    <td>{{ estu.ubicacion }}</td>
+    <td>{{ estu.funcion }}</td>
+    <td> {{ estu.est }}</td>
+    <td> {{ estu.nroSesiones }}</td>
+    <td> {{ estu.lunes }}</td>
+    <td> {{ estu.martes }}</td>
+    <td> {{ estu.miercoles }}</td>
+    <td> {{ estu.jueves }}</td>
+    <td> {{ estu.viernes }}</td>
+    <td> {{ estu.sabado }}</td>
+    <td> {{ estu.hSimul }}</td>
+    <td> {{ estu.fechaI }}</td>
+    <td> {{ estu.fechaF }}</td>
+    <td> {{ estu.horarioF }}</td>
+    <td> {{ estu.codcar }}</td>
+    <td> {{ estu.carrera }}</td>
+    <td> {{ estu.facultad }}</td>
+    </tr>
+  </ng-template>
+</p-table>
+
+
+
+<p-card header="Simple Card" [style]="{'width': '25rem', 'margin-bottom': '2em'}">
+  <ng-template pTemplate="header">
+      <img alt="Card" src="https://primefaces.org/cdn/primeng/images/usercard.png">
+  </ng-template>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing etdt. Inventore sed consequuntur error repudiandae numquam deserunt
+      quisquam repellat tdbero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!</p>
+</p-card>
+
+<p-card header="Advanced Card" subheader="Card Subheader" [style]="{width: '360px'}" styleClass="p-card-shadow">
+  <ng-template pTemplate="header">
+      <img alt="Card" src="https://primefaces.org/cdn/primeng/images/usercard.png">
+  </ng-template>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing etdt. Inventore sed consequuntur error repudiandae numquam deserunt
+      quisquam repellat tdbero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!</p>
+  <ng-template pTemplate="footer">
+      
+  </ng-template>
+</p-card>
