@@ -1,6 +1,9 @@
+import { Estudiante } from './../modelos/estudiante';
 /*import { Component, OnInit } from '@angular/core';
-import { EstudianteModel } from '../modules/estudiante.modul';
-import { EstudianteHttpservice } from '../services/estudiante-http.service.ts.service';
+import { Estudiante} from '../modelos/estudiante';
+import { EstudianteService } from '../services/estudiante.service';
+
+
 
 @Component({
   selector: 'app-estudiante',
@@ -9,84 +12,86 @@ import { EstudianteHttpservice } from '../services/estudiante-http.service.ts.se
 })
 export class EstudianteComponent implements OnInit {
 
-  estudiante: EstudianteModel[] = [];
+  estudiantes: Estudiante[] = [];
+ 
 
-  constructor(private estudiantesService: EstudianteHttpservice) {}
+  constructor(private estudiantesService: EstudianteService) {
+    
+  }
 
   ngOnInit(): void {
     this.getEstudiantes();
+  }
+getEventValue(event: any){
+return event.target.value;
+}
+
+cargarDatos (cedula: string) {
+  this.estudiantesService
+    .getOne(cedula).subscribe((response: Estudiante[]) => {
+      this.estudiantes = response;
+    });
+  console.log(this.estudiantes);
+}
+
+  getEstudiantes() {
+    this.estudiantesService.getAll().subscribe(response => {
+      this.estudiantes = response;
+      console.log(this.estudiantes);
+    });
+  }
+}*/
+
+import { Component, OnInit } from '@angular/core';
+import { EstudianteHttpService } from '../services/estudiante.service';
+
+
+
+@Component({
+  selector: 'app-estudiantes',
+  templateUrl: './estudiante.component.html',
+  styleUrls: ['./estudiante.component.css']
+})
+export class EstudianteComponent implements OnInit {
+  estudiantes: Estudiante[] = [];
+  statuses: any[] = [];
+  activityValues: number[] = [0, 100];
+
+
+  constructor(private estudianteHttpservices: EstudianteHttpService) {}
+
+  getEventValue($event: any): string {
+    return $event.target.value;
+  }
+
+  ngOnInit(): void {
+    this.getEstudiantes();
+    this.cargarDatos;
+    
+
   }
 
   getEstudiantes(){
-    this.estudiantesService.getAll().subscribe(response=>{
-      this.estudiante = response;
-      console.log(this.estudiante)
-    })
-  }
-
-}*/
-/*import { Component, OnInit } from '@angular/core';
-import { EstudianteModel } from '../modules/estudiante.modul';
-import { EstudianteHttpservice } from '../services/estudiante-http.service.ts.service';
-
-@Component({
-  selector: 'app-estudiantes',
-  templateUrl: './estudiante.component.html',
-  styleUrls: ['./estudiante.component.css']
-})
-export class EstudianteComponent implements OnInit {
-
-  estudiante: EstudianteModel[] = [];
-  filteredEstudiante: EstudianteModel[] = [];
-
-  constructor(private estudianteHttpService: EstudianteHttpservice) { }
-
-  ngOnInit(): void {
-    this.getEstudiantes();
-  }
-
-  getEstudiantes(): void {
-    this.estudianteHttpService.getAll().subscribe(estudiantes => {
-      this.estudiante = estudiantes;
-      console.log(this.estudiante);
-    });
-  }
-
-}*/
-import { Component, OnInit } from '@angular/core';
-import { EstudianteModel } from '../modules/estudiante.modul';
-import { EstudianteHttpservice } from '../services/estudiante-http.service.ts.service';
-import { Table } from 'primeng/table';
-
-@Component({
-  selector: 'app-estudiantes',
-  templateUrl: './estudiante.component.html',
-  styleUrls: ['./estudiante.component.css']
-})
-export class EstudianteComponent implements OnInit {
-
-  estudiante: EstudianteModel[] = [];
-  filteredEstudiante: EstudianteModel[] = [];
-
-  constructor(private estudianteHttpService: EstudianteHttpservice) { }
-
-  ngOnInit(): void {
-    this.getEstudiantes();
-  }
-
-  getEstudiantes(): void {
-    this.estudianteHttpService.getAll().subscribe(estudiantes => {
-      this.estudiante = estudiantes;
-      this.filteredEstudiante = estudiantes;
-      console.log(this.estudiante);
-    });
-  }
-
-  filterEstudiantes(event: any, table: Table) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    table.filterGlobal(filterValue, 'contains');
-  }
-
+  this.estudianteHttpservices.getAll().subscribe(
+    response => {
+      this.estudiantes = response;
+      console.log(response);
+    }
+  );
 }
 
+cargarDatos (cedula: string) {
+  this.estudianteHttpservices
+    .getOne(cedula).subscribe((response: Estudiante[]) => {
+      this.estudiantes = response;
+    });
+  console.log(this.estudiantes);
+}
+
+
+
+
+
+
+}
 

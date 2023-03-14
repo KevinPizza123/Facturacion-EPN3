@@ -1,4 +1,4 @@
-export interface EstudianteModel {
+export interface Estudiante {
     codmat:      string;
     materia:     string;
     paralelo:    string;
@@ -22,10 +22,3 @@ export interface EstudianteModel {
     carrera:     string;
     facultad:    string;
 }
-/*export interface EstudianteModel{
-    id: number
-    title: String
-    price: number
-    description: String
-    images:String []
-   }*/

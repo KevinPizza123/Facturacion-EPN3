@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { EstudianteModel } from './modules/estudiante.modul';
-import { EstudianteHttpservice } from './services/estudiante-http.service.ts.service';
+import { Estudiante } from './modelos/estudiante';
+
 
 @Component({
   selector: 'app-root',
