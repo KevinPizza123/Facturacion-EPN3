@@ -1,12 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { EstudianteComponent } from './estudiante/estudiante.component';
+import { UsuarioComponent } from './estudiante/usuario.component';
+
 
 
 
 const routes: Routes = [
-  {path: 'estudiante', component:EstudianteComponent},
+  {path: 'estudiante', component:UsuarioComponent},
 
 
 ];

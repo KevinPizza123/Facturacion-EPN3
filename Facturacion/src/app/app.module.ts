@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { EstudianteComponent } from './estudiante/estudiante.component';
+
 
 
 
@@ -30,10 +30,11 @@ import {MenubarModule} from 'primeng/menubar';
 
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/api';
+import { UsuarioComponent } from './estudiante/usuario.component';
 @NgModule({
   declarations: [		
     AppComponent,
-      EstudianteComponent,
+      UsuarioComponent,
       
    ],
   imports: [

@@ -1,4 +1,4 @@
-export interface Estudiante {
+export interface Usuario {
     codmat:      string;
     materia:     string;
     paralelo:    string;

@@ -1,47 +1,61 @@
-<nav class="navbar navbar-expand-md navbar-white bg-white">
-  <div class="container">
+
+  <div class="container" style="text-align: center; display: flex;justify-content: center;">
     <div class="row align-items-center text-center">
       <div class="col">
         <a class="navbar-brand" href="#" style="background-color: azure;"><img src="../../assets/logo-epn-vertical.png"
             alt="EPN" style="width: 100px;"></a>
       </div>
       <div class="col">
-        <div style="color: rgb(10, 10, 10); font-size: 30px;">SISTEMA DE FACTURACIÓN</div>
+        <div style="color: rgb(10, 10, 10); font-size: 30px; ">SISTEMA DE FACTURACIÓN</div>
+        
+  
       </div>
     </div>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    
   </div>
-</nav>
+
 
 <hr class="p-dashed">
 
 <br>
 
 <div class="container p-card mt-5">
-  <div class="p-d-flex p-jc-center p-ai-center filter__card">
-    <form id="form" (submit)="cargarDatos(cedula.value)">
-      <div class="p-fluid form__filter">
-        <div class="p-field">
-          <span class="p-float-label">
-            <input #cedula id="cedula" type="text" pInputText />
-            <label for="cedula">Cedula</label>
-          </span>
-        </div>
-        <div class="p-field">
-          <button class="p-button-rounded" type="submit" pButton>Buscar</button>
-        </div>
+
+  <div>
+    <form class="container mb-3 mt-5 " (submit)="cargarDatos(cedula.value,fecha.value,ide.value)">
+      <h4 style="text-align: center;">Buscar</h4>
+      <div class="buscador">
+          <div class="p-field">
+              <span class="p-float-label">
+                  <input #cedula type="text" pInputText />
+                  <label for="cedula">Cedula</label>
+              </span>
+          </div>
+          <div class="p-field">
+              <span class="p-float-label">
+                  <input #fecha type="text" pInputText />
+                  <label for="fecha">Fecha</label>
+              </span>
+          </div>
+          <div class="p-field">
+              <span class="p-float-label">
+                  <p-dropdown #ide type="text" [options]="[{label:'1', value:1}, {label:'2', value:2}]" [(ngModel)]="selectedId"></p-dropdown>
+                  <label for="Id">ID</label>
+              </span>
+          </div>
+          <div class="p-field">
+              <button #searchInput class="p-button boton" type="submit" pButton>Buscar</button>
+              <button type="button" class="p-button boton" (click)="limpiarFormulario()">Limpiar</button>
+          </div>
       </div>
-    </form>
-  </div>
+  </form>
+</div>
 
-  <input #searchInput pInputText type="text" (input)="dt.filterGlobal(getEventValue($event), 'contains')"
-    placeholder="" />
+  <p-divider type="dashed"></p-divider>
 
-  <button pButton type="button" icon="pi pi-refresh" (click)="dt.reset(); searchInput.value=''"></button>
-  <p-table #dt [value]="estudiantes" [globalFilterFields]="[
+  <div class="container p-card  shadow-8">
+    <div class="p-3" style="font-weight: bolder; text-align: center; font-weight: bold; margin-top: 35px;">TABLA DE DATOS</div>
+  <p-table #dt [value]="usuarios" [globalFilterFields]="[
     'codmat',
     'materia',
     'paralelo',
@@ -64,13 +78,16 @@
         'codcar',
           'carrera',
          'facultad',
-  ]" [paginator]="true" [rows]="5" [showCurrentPageReport]="true" [style]="{ 'min-width': '50rem' }"
-    currentPageReportTemplate="Lista {first} de {last} por {totalRecords} busquedas">
+  ]" [paginator]="true" [rows]="5" [showCurrentPageReport]="true" [tableStyle]="{'min-width': '50rem'}"  dataKey="id" [resizableColumns]="true">
     <ng-template pTemplate="caption">
 
       <div class="ordenar" style="text-align: center;">
-        <h4>Ordenar Por </h4>
+        <h4>Filtrar</h4>
         <p-sortIcon pSortableColumn="codmat" field="codmat"></p-sortIcon>
+        <input #searchInput pInputText type="text" (input)="dt.filterGlobal(getEventValue($event), 'contains')"
+    placeholder="" />
+
+  <button pButton type="button" icon="pi pi-refresh" (click)="dt.reset(); searchInput.value=''"></button>
       </div>
     </ng-template>
     <ng-template pTemplate="header">
@@ -101,7 +118,7 @@
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-tabla>
-      <tr [ngClass]="{'tabla-green': tabla.horas > 4, 'tabla-red': tabla.horas <= 4}">
+      <tr [ngStyle]="{backgroundColor:'var(--gray-300)'}">
         <td>{{tabla.codmat}}</td>
         <td>{{tabla.materia}}</td>
         <td>{{tabla.paralelo}}</td>
@@ -140,11 +157,7 @@
 
 
   </p-table>
-  <p-table>
-
-
-
-  </p-table>
+</div>
 
 </div>
 
